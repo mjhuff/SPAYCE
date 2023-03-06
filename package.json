@@ -1,0 +1,20 @@
+{
+  "name": "codesmithsoloproject",
+  "version": "1.0.0",
+  "description": "CodeSmith Solo Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjhuff/CodesmithSoloProject.git"
+  },
+  "keywords": [],
+  "author": "Jamey Huffnagle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjhuff/CodesmithSoloProject/issues"
+  },
+  "homepage": "https://github.com/mjhuff/CodesmithSoloProject#readme"
+}
