@@ -5,8 +5,9 @@
 1. Create a React-based site using Next.js for SSR.
 2. Have a navbar on left that links to different pages...uses the cool globe library for ISS and auto load/scroll for Mars API.
 3. Use Tailwind to do the CSS.
-4. Have users login to see their favorite saved space photos - use planetscale for postgres db. (stretch)
-5. D3 Animations to spruce it up. (stretch)
+4. Use webpack and optimize? (might not be very needed with Next.js)
+5. Have users login to see their favorite saved space photos - use planetscale for postgres db. (stretch)
+6. D3 Animations to spruce it up. (stretch)
 
 # Notes
 
