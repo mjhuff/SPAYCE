@@ -8,6 +8,7 @@
 4. Use webpack and optimize? (might not be very needed with Next.js)
 5. Have users login to see their favorite saved space photos - use planetscale for postgres db. (stretch)
 6. D3 Animations to spruce it up. (stretch)
+7. Custom fonts (stretch)
 
 # Notes
 
