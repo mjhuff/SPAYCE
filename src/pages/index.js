@@ -5,7 +5,7 @@ const Home = () => {
         autoPlay
         loop
         muted
-        className="bg-video"
+        className="w-screen h-screen object-cover fixed inset-0"
         src="/space_vid.mp4"
         type="video/mp4"
       >
