@@ -1,25 +1,20 @@
 import localFont from 'next/font/local';
+
+import MainNavbar from '../components/mainNavbar';
+
 const titleFont = localFont({ src: './SphereFezFont.otf' });
-const buttonFont = localFont({ src: './Atures700PersonalUseOnly-lax5.ttf' });
 
 const Home = () => {
   return (
     <main className="flex flex-col justify-center items-center h-screen">
-      <div className="flex justify-center bg-black/75 rounded-lg mb-48 px-6">
-        <h1 className={`${titleFont.className} text-white text-9xl`}>Test</h1>
-      </div>
-      <div className="flex justify-around bg-black/75 rounded-lg w-1/3">
-        <button
-          className={`${buttonFont.className} text-white text-lg h-16 w-56 bg-indigo-900 rounded-xl my-2.5 hover:bg-indigo-800`}
+      <div className="flex justify-center bg-zinc-900/75 rounded-lg mb-48 px-6">
+        <h1
+          className={`${titleFont.className} text-white text-9xl cursor-default`}
         >
-          ISS Data
-        </button>
-        <button
-          className={`${buttonFont.className} text-white text-lg h-16 w-56 bg-indigo-900 rounded-xl my-2.5 hover:bg-indigo-800`}
-        >
-          Mars Rover Images
-        </button>
+          SPAYCE
+        </h1>
       </div>
+      <MainNavbar firstPath={'iss'} secondPath={'mars'} isLandingPage={true} />
       <video
         autoPlay
         loop
