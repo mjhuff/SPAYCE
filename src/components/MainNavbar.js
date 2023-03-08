@@ -23,6 +23,7 @@ const MainNavbar = ({ firstPath, secondPath, isLandingPage }) => {
           {potentialPaths[firstPath][1]}
         </button>
         <button
+          onClick={() => router.push(potentialPaths[secondPath][0])}
           className={`${buttonFont.className} text-white text-lg h-16 w-56 bg-indigo-900 rounded-xl my-2.5 hover:bg-indigo-800`}
         >
           {potentialPaths[secondPath][1]}
@@ -39,6 +40,7 @@ const MainNavbar = ({ firstPath, secondPath, isLandingPage }) => {
           {potentialPaths[firstPath][1]}
         </button>
         <button
+          onClick={() => router.push(potentialPaths[secondPath][0])}
           className={`${buttonFont.className} text-white text-xs h-8 w-28 bg-gray-700 rounded-xl my-2.5 hover:bg-indigo-800`}
         >
           {potentialPaths[secondPath][1]}

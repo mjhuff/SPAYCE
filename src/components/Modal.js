@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
+import pilotURLs from '../data/pilotURL';
+
 //Click somewhere other than X on modal background to close page.
-function Modal({ show, onClose, children, title }) {
+//To implement the same close logic on escape press, you need to be able to inject JS into the iframe.
+function Modal({ show, onClose, pilotName }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -17,18 +20,22 @@ function Modal({ show, onClose, children, title }) {
   const modalContent = show ? (
     <div
       id="overlay"
-      className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-black/50"
+      className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-black/75"
     >
-      <div id="styled-modal" className="bg-white w-1/4 h-1/4 rounded-xl p-4">
-        <div id="modal-header" className="flex justify-end text-2xl">
+      <div
+        id="styled-modal"
+        className="flex flex-col bg-white rounded-xl p-4 w-3/4 h-3/4"
+      >
+        <div id="modal-header" className="grow-0 flex justify-end text-2xl">
           <a href="#" onClick={handleCloseClick}>
             x
           </a>
         </div>
-        {title && <h1 id="modal-title">Test Title</h1>}
-        <div id="modal-body" className="pt-10">
-          Test Body
-        </div>
+        <iframe
+          id="modal-body"
+          className="w-100 h-100 grow"
+          src={`${pilotURLs[pilotName]}`}
+        />
       </div>
     </div>
   ) : null;

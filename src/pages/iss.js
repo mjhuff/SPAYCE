@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import skyBG from '../../public/space-bg.jpg';
 
-import MainNavbar from '../components/mainNavbar';
+import PageTitle from '../components/PageTitle';
+import MainNavbar from '../components/MainNavbar';
 import ISSCard from '../components/ISSCard';
 
 const ISS = ({ pilots }) => {
@@ -15,8 +16,10 @@ const ISS = ({ pilots }) => {
 
   //For the outer div if I decide to use a gradient: className="bg-gradient-to-b from-space-black to-deep-black w-screen h-screen
   return (
-    <div className="bg-black w-screen h-screen">
-      {/* <Image
+    <>
+      <PageTitle title={'SPAYCE - ISS'} />
+      <div className="bg-black w-screen h-screen">
+        {/* <Image
         src={skyBG}
         alt="Starscape Background"
         fill
@@ -24,13 +27,14 @@ const ISS = ({ pilots }) => {
         quality={10}
         priority={true}
       /> */}
-      <MainNavbar
-        firstPath={'home'}
-        secondPath={'mars'}
-        isLandingPage={false}
-      />
-      <ISSCard pilots={pilotsList} />
-    </div>
+        <MainNavbar
+          firstPath={'home'}
+          secondPath={'mars'}
+          isLandingPage={false}
+        />
+        <ISSCard pilots={pilotsList} />
+      </div>
+    </>
   );
 };
 
