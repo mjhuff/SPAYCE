@@ -21,9 +21,6 @@ function Modal({ show, onClose, pilotName, roverURL }) {
 
   const URL = pilotName ? pilotURLs[pilotName] : roverURL;
 
-  const yVal = window.scrollY;
-  const xVal = window.scrollX;
-
   const modalContent = show ? (
     <div
       id="overlay"
