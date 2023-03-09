@@ -16,7 +16,7 @@ const RoverCard = ({ urls }) => {
   if (urls) {
     imageArray = urls.map((url) => {
       return (
-        <div key={url}>
+        <div key={url + Math.random() + Date.now()}>
           <Image
             src={url}
             alt="Mars Rover Picture"

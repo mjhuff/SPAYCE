@@ -21,15 +21,18 @@ function Modal({ show, onClose, pilotName, roverURL }) {
 
   const URL = pilotName ? pilotURLs[pilotName] : roverURL;
 
+  const yVal = window.scrollY;
+  const xVal = window.scrollX;
+
   const modalContent = show ? (
     <div
       id="overlay"
-      className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-black/75"
+      className={`fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-black/75`}
     >
       <div
         id="styled-modal"
         className={`flex flex-col bg-white rounded-xl p-4 ${
-          pilotName ? 'w-3/4 h-3/4' : 'w-1/2 h-3/4'
+          pilotName ? 'w-3/4 h-3/4' : `w-[50vw] h-[75vh]`
         }`}
       >
         <div
