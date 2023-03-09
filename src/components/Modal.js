@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import pilotURLs from '../data/pilotURL';
+import FavoriteButton from './FavoriteButton';
 
 //Click somewhere other than X on modal background to close page.
 //To implement the same close logic on escape press, you need to be able to inject JS into the iframe.
@@ -37,11 +38,7 @@ function Modal({ show, onClose, pilotName, roverURL }) {
             roverURL ? 'justify-between' : 'justify-end'
           } text-2xl`}
         >
-          {roverURL ? (
-            <button className="text-white bg-slate-700 mb-2 rounded-xl p-2">
-              Favorite
-            </button>
-          ) : null}
+          {roverURL ? <FavoriteButton url={URL} /> : null}
           <a href="#" onClick={handleCloseClick}>
             x
           </a>

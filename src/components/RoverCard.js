@@ -34,7 +34,7 @@ const RoverCard = ({ urls }) => {
   }
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap bg-zinc-900/75 rounded-xl">
       <div
         tabIndex={0}
         onKeyDown={(e) =>

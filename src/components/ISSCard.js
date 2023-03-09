@@ -29,7 +29,7 @@ const ISSCard = ({ pilots }) => {
 
   return (
     <div
-      className="pt-32"
+      className="pt-32 h-2/5 w-2/5"
       tabIndex={0}
       onKeyDown={(e) =>
         e.key === 'Escape' && showModal ? setShowModal(false) : null
@@ -40,7 +40,7 @@ const ISSCard = ({ pilots }) => {
         show={showModal}
         pilotName={selectedPilot}
       />
-      <div className="bg-zinc-900/75 w-1/3 ml-5 rounded-xl">
+      <div className="bg-zinc-900/75 w-4/5 ml-5 rounded-xl">
         <h1
           className={`${issTitleFont.className} text-white text-center text-5xl ml-5`}
         >
