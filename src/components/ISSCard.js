@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import localFont from 'next/font/local';
 const issTitleFont = localFont({ src: './Chronosfer.otf' });
 
 import Modal from '../components/Modal';
 
-const ISSCard = ({ pilots }) => {
+const ISSCard = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPilot, setSelectedPilot] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [pilotsList, setPilotsList] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('http://api.open-notify.org/astros.json', {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+      const data = await res.json();
+      setPilotsList(data.people);
+      setIsLoading(false);
+    })();
+  }, []);
 
   let issArray;
-  if (pilots && pilots.length) {
-    issArray = pilots.map((pilot) => {
+  if (!isLoading) {
+    issArray = pilotsList.map((pilot) => {
       return (
         <div
           className="text-white text-2xl text-center last:mb-5 cursor-pointer even:bg-zinc-800 odd:bg-zinc-700 hover:bg-stone-400 rounded-xl"
@@ -25,6 +40,16 @@ const ISSCard = ({ pilots }) => {
         </div>
       );
     });
+  } else {
+    issArray = [];
+    for (let i = 0; i <= 13; i++) {
+      issArray.push(
+        <div
+          className="last:mb-5 cursor-pointer even:bg-zinc-800 odd:bg-zinc-700 hover:bg-stone-400 rounded-xl w-full h-8 animate-pulse"
+          key={Math.random() + Date.now()}
+        />
+      );
+    }
   }
 
   return (

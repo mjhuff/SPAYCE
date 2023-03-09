@@ -15,13 +15,12 @@ import StarBackground from '../components/StarBackground';
 import localFont from 'next/font/local';
 const issTitleFont = localFont({ src: '../components/Chronosfer.otf' });
 
-const ISS = ({ pilots }) => {
-  const [pilotsList, setPilotsList] = useState('');
+const ISS = () => {
   const [ISSData, setISSData] = useState([]);
 
-  useEffect(() => {
-    setPilotsList(pilots.people);
-  }, [pilots.people]);
+  // useEffect(() => {
+  //   setPilotsList(pilots.people);
+  // }, [pilots.people]);
 
   //For the outer div if I decide to use a gradient: className="bg-gradient-to-b from-space-black to-deep-black w-screen h-screen
   //{ altitude, longitude, latitude, velocity }
@@ -41,7 +40,7 @@ const ISS = ({ pilots }) => {
           secondPath={'mars'}
           isLandingPage={false}
         />
-        <ISSCard pilots={pilotsList} />
+        <ISSCard />
         <div className="bg-zinc-900/75 rounded-xl flex flex-col items-center mt-52 w-1/4 h-2/5">
           <h1 className={`${issTitleFont.className} text-white text-5xl`}>
             Current ISS Data
@@ -60,20 +59,14 @@ export default ISS;
 
 // This function gets called at build time
 //YOU CAN ONLY CALL IT FROM NEXT.JS PAGES, NOT IN YOUR COMPONENTS FOLDER!
-export async function getStaticProps() {
-  // Call an external API endpoint to get pilots
-  const res = await fetch('http://api.open-notify.org/astros.json', {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
-  const pilots = await res.json();
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get pilots
 
-  // By returning { props: { pilots } }, the ISSCard component
-  // will receive `pilots` as a prop at build time
-  return {
-    props: {
-      pilots,
-    },
-  };
-}
+//   // By returning { props: { pilots } }, the ISSCard component
+//   // will receive `pilots` as a prop at build time
+//   return {
+//     props: {
+//       pilots,
+//     },
+//   };
+// }
