@@ -9,31 +9,47 @@ import PageTitle from '../components/PageTitle';
 import MainNavbar from '../components/MainNavbar';
 import ISSCard from '../components/ISSCard';
 import GlobeCard from '../components/GlobeCard';
+import ISSDataInfo from '../components/ISSDataInfo';
+import StarBackground from '../components/StarBackground';
+
+import localFont from 'next/font/local';
+const issTitleFont = localFont({ src: '../components/Chronosfer.otf' });
 
 const ISS = ({ pilots }) => {
   const [pilotsList, setPilotsList] = useState('');
+  const [ISSData, setISSData] = useState([]);
 
   useEffect(() => {
     setPilotsList(pilots.people);
   }, [pilots.people]);
 
   //For the outer div if I decide to use a gradient: className="bg-gradient-to-b from-space-black to-deep-black w-screen h-screen
+  //{ altitude, longitude, latitude, velocity }
+  const ISSDataHandler = (issData) => {
+    const { latitude, longitude, velocity, altitude } = issData;
+    return setISSData([latitude, longitude, velocity, altitude]);
+  };
 
   /*
    */
   return (
     <>
       <PageTitle title={'SPAYCE - ISS'} />
-      <div className="flex justify-between bg-black w-screen h-screen">
+      <div className="flex justify-between w-screen h-screen">
         <MainNavbar
           firstPath={'home'}
           secondPath={'mars'}
           isLandingPage={false}
         />
         <ISSCard pilots={pilotsList} />
-        <div className="bg-zinc-900/75 grow w-2/3 mr-5 mb-5 mt-32 rounded-xl flex flex-col justify-end items-end">
-          <div>Test</div>
-          <GlobeCard />
+        <div className="bg-zinc-900/75 rounded-xl flex flex-col items-center mt-52 w-1/4 h-2/5">
+          <h1 className={`${issTitleFont.className} text-white text-5xl`}>
+            Current ISS Data
+          </h1>
+          <ISSDataInfo ISSData={ISSData} />
+        </div>
+        <div className="grow w-1/2 mr-5 mb-5 mt-32 rounded-xl flex flex-col justify-end items-end">
+          <GlobeCard issDataHandler={ISSDataHandler} />
         </div>
       </div>
     </>

@@ -15,7 +15,7 @@ const RoverRadioButton = ({ roverNames, setRover }) => {
           <input type="radio" name="option" id={idx} className="peer hidden" />
           <label
             htmlFor={idx}
-            className="text-white block cursor-pointer select-none rounded-xl py-2 px-5 text-center hover:bg-sky-600 peer-checked:bg-sky-700 peer-checked:font-bold"
+            className="text-white text-xl block cursor-pointer select-none rounded-xl py-2 px-5 text-center hover:bg-sky-600 peer-checked:bg-sky-700 peer-checked:font-bold"
           >
             {rover}
           </label>

@@ -1,6 +1,7 @@
 import PageTitle from '../components/PageTitle';
 import MainNavbar from '../components/MainNavbar';
 import RoverRadioButton from '../components/RoverRadioButton';
+import StarBackground from '../components/StarBackground';
 
 import { useState, useEffect } from 'react';
 import localFont from 'next/font/local';
@@ -43,7 +44,7 @@ const Mars = ({ roversList }) => {
   return (
     <>
       <PageTitle title={'SPAYCE - Mars Images'} />
-      <div className="bg-black w-screen h-screen">
+      <div className="w-screen h-screen">
         <MainNavbar
           firstPath={'home'}
           secondPath={'iss'}
