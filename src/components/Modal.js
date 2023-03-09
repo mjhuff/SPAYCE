@@ -5,7 +5,8 @@ import pilotURLs from '../data/pilotURL';
 
 //Click somewhere other than X on modal background to close page.
 //To implement the same close logic on escape press, you need to be able to inject JS into the iframe.
-function Modal({ show, onClose, pilotName }) {
+//TO DO: Implement URLs to work.
+function Modal({ show, onClose, pilotName, roverURL }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,8 @@ function Modal({ show, onClose, pilotName }) {
     onClose();
   };
 
+  const URL = pilotName ? pilotURLs[pilotName] : roverURL;
+
   const modalContent = show ? (
     <div
       id="overlay"
@@ -24,18 +27,26 @@ function Modal({ show, onClose, pilotName }) {
     >
       <div
         id="styled-modal"
-        className="flex flex-col bg-white rounded-xl p-4 w-3/4 h-3/4"
+        className={`flex flex-col bg-white rounded-xl p-4 ${
+          pilotName ? 'w-3/4 h-3/4' : 'w-1/2 h-3/4'
+        }`}
       >
-        <div id="modal-header" className="grow-0 flex justify-end text-2xl">
+        <div
+          id="modal-header"
+          className={`grow-0 flex ${
+            roverURL ? 'justify-between' : 'justify-end'
+          } text-2xl`}
+        >
+          {roverURL ? (
+            <button className="text-white bg-slate-700 mb-2 rounded-xl p-2">
+              Favorite
+            </button>
+          ) : null}
           <a href="#" onClick={handleCloseClick}>
             x
           </a>
         </div>
-        <iframe
-          id="modal-body"
-          className="w-100 h-100 grow"
-          src={`${pilotURLs[pilotName]}`}
-        />
+        <iframe id="modal-body" className="w-100 h-100 grow" src={URL} />
       </div>
     </div>
   ) : null;

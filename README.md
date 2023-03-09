@@ -9,6 +9,8 @@
 5. Have users login to see their favorite saved space photos - use planetscale for postgres db. (stretch)
 6. D3 Animations to spruce it up. (stretch)
 7. Custom fonts (stretch)
+8. Style iframes (stretch)
+9. Move more data to database (stretch)
 
 # Notes
 

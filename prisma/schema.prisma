@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model FavoritedImages {
+  id  BigInt @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  url String @unique(map: "url") @db.VarChar(255)
+}
