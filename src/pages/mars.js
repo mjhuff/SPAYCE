@@ -27,15 +27,30 @@ TO DO:
 Have components loading while waiting on API data for the rover buttons. Redirect user to Mars page IMMEDIATELY.
 Solve radio button bug.
 */
-const Mars = ({ roversList }) => {
-  const [roverNames, setRoverNames] = useState('');
+const Mars = () => {
+  const [roverNames, setRoverNames] = useState(null);
   const [selectedRover, setSelectedRover] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  //Only pull out the actual rover names.
   useEffect(() => {
-    const roverNames = roversList.rovers.map((rover) => rover.name);
-    setRoverNames(roverNames);
-  }, [roversList]);
+    console.log('in use effect');
+
+    (async () => {
+      const res = await fetch(
+        'https://mars-photos.herokuapp.com/api/v1/rovers/',
+        {
+          headers: {
+            Accept: 'application/json',
+          },
+        }
+      );
+      const data = await res.json();
+      const roverNames = data.rovers.map((rover) => rover.name);
+      console.log(roverNames);
+      setRoverNames(roverNames);
+      setIsLoading(false);
+    })();
+  }, []);
 
   const setRoverHandler = (rover) => {
     if (selectedRover !== rover) setSelectedRover(rover);
@@ -59,6 +74,7 @@ const Mars = ({ roversList }) => {
           <RoverRadioButton
             roverNames={roverNames}
             setRover={setRoverHandler}
+            isLoading={isLoading}
           />
         </div>
         {selectedRover && <RoverImagesContainer rover={selectedRover} />}
@@ -68,21 +84,3 @@ const Mars = ({ roversList }) => {
 };
 
 export default Mars;
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get rovers.
-  const res = await fetch('https://mars-photos.herokuapp.com/api/v1/rovers/', {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
-  const roversList = await res.json();
-
-  // By returning { props: { pilots } }, the ISSCard component
-  // will receive `pilots` as a prop at build time
-  return {
-    props: {
-      roversList,
-    },
-  };
-}

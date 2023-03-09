@@ -2,12 +2,12 @@ import React from 'react';
 
 import { useState, useEffect } from 'react';
 
-const RoverRadioButton = ({ roverNames, setRover }) => {
+const RoverRadioButton = ({ roverNames, setRover, isLoading }) => {
   const [columnNumber, setColumnNumber] = useState(0);
 
   let rovers;
   //if rovers from props (need api on actual page and pass down)
-  if (roverNames && roverNames.length) {
+  if (!isLoading) {
     rovers = roverNames.map((rover, idx) => {
       //ISSUE IS THAT THE RADIO BUTTON ISN'T CONNECTED TO THE INPUT.
       return (
@@ -28,7 +28,15 @@ const RoverRadioButton = ({ roverNames, setRover }) => {
     setColumnNumber(rovers ? rovers.length : 0);
   }, [rovers]);
 
-  if (rovers && rovers.length)
+  if (isLoading)
+    return (
+      <div className="flex justify-left items-center bg-zinc-900/75 w-[34rem] h-14 rounded-xl">
+        <div className="flex justify-center items-center mx-5 my-2 bg-gray-600 w-full h-3/4 rounded-xl animate-pulse text-white text-xl">
+          Loading...
+        </div>
+      </div>
+    );
+  if (!isLoading)
     return (
       <div
         className={`flex space-x-2 rounded-xl bg-zinc-900/75 p-2`}
