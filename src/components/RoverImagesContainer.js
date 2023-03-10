@@ -8,6 +8,12 @@ import { useState, useEffect, useCallback } from 'react';
 //TO DO: API ERROR HANDLING.
 //TO DO: PAGINATED LOADING!
 
+/*
+
+Infinite scrolling requires a good bit of state. Making repeated fetch requests each time. 
+
+*/
+
 const RoverImagesContainer = ({ rover }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [currentURLs, setCurrentURLS] = useState([]);

@@ -15,6 +15,12 @@ import StarBackground from '../components/StarBackground';
 import localFont from 'next/font/local';
 const issTitleFont = localFont({ src: '../components/Chronosfer.otf' });
 
+/*
+
+We're passing data up from GlobeCard to pass it back down to the ISS card. 
+Inefficient for sure. Should be getting the data here and passing it down into child components.
+
+*/
 const ISS = () => {
   const [ISSData, setISSData] = useState([]);
 

@@ -2,6 +2,11 @@ import React from 'react';
 
 import { useState, useEffect } from 'react';
 
+/*
+
+Needs serious refactoring, but does handle loading.
+
+*/
 const RoverRadioButton = ({ roverNames, setRover, isLoading }) => {
   const [columnNumber, setColumnNumber] = useState(0);
 
@@ -9,7 +14,6 @@ const RoverRadioButton = ({ roverNames, setRover, isLoading }) => {
   //if rovers from props (need api on actual page and pass down)
   if (!isLoading) {
     rovers = roverNames.map((rover, idx) => {
-      //ISSUE IS THAT THE RADIO BUTTON ISN'T CONNECTED TO THE INPUT.
       return (
         <div key={rover + Math.random()} onClick={() => setRover(rover)}>
           <input type="radio" name="option" id={idx} className="peer hidden" />

@@ -9,6 +9,13 @@ import { useState } from 'react';
 
 //TO DO: Fix modal escape.
 
+
+/*
+
+This generates the images and adds them to the card.
+
+*/
+
 const RoverCard = ({ urls }) => {
   const [showModal, setShowModal] = useState([false, '']);
 

@@ -5,6 +5,11 @@ import PageTitle from '../components/PageTitle';
 
 const titleFont = localFont({ src: './SphereFezFont.otf' });
 
+/*
+
+Nothing crazy here. We're changing the page title, creating the navbar, and using the video as the background.
+
+*/
 const Home = () => {
   return (
     <>

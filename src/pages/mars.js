@@ -27,6 +27,13 @@ TO DO:
 Have components loading while waiting on API data for the rover buttons. Redirect user to Mars page IMMEDIATELY.
 Solve radio button bug.
 */
+
+
+/*
+
+Get a list of rovers to populate the rover radio buttons, which we pass down. 
+
+*/
 const Mars = () => {
   const [roverNames, setRoverNames] = useState(null);
   const [selectedRover, setSelectedRover] = useState('');
@@ -46,7 +53,6 @@ const Mars = () => {
       );
       const data = await res.json();
       const roverNames = data.rovers.map((rover) => rover.name);
-      console.log(roverNames);
       setRoverNames(roverNames);
       setIsLoading(false);
     })();
